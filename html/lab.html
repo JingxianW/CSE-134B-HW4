@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Jingxian's Website</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="lab page of my personal website. This web page will only be used for homework 2 to test various tags">
+    <meta name="author" content="Jingxian Wang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        table, th, td {
+          border: 2px solid pink;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/index.html">&#8249; back</a>
+    
+    <header><h1>My Lab</h1></header>
+
+    <hr>
+
+    <section>
+        <aside>
+            <h3>aside Tag</h3>
+            <p>This is a test paragraph text in aside Tag</p>
+        </aside>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>canvas Tag</h3>
+        <canvas id="canvas">Your browser does not support the canvas tag.</canvas>
+    
+        <script>
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            ctx.fillStyle = "#FFC0CB";
+            ctx.beginPath();
+            ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+        </script>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>svg Tag</h3>
+        <svg width="200" height="200">
+            <circle cx="100" cy="70" r="50" stroke="black" stroke-width="1" fill="pink" />
+        </svg> 
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>ol Tag</h3>
+        <p></p>
+        <ol>
+            <li>Monday</li>
+            <li>Tuesday</li>
+            <li>Wednesday</li>
+            <li>Thursday</li>
+            <li>Friday</li>
+            <li>Saturday</li>
+            <li>Sunday</li>
+          </ol>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>optgroup Tag</h3>
+        <form>
+            <label for="classes">Choose your favorite course:</label>
+            <select name="classes" id="classes">
+                <optgroup label="CSE Courses">
+                    <option value="CSE 134B 1">CSE 134B</option>
+                    <option value="CSE 134B 2">CSE 134B</option>
+                    <option value="CSE 134B 3">CSE 134B</option>
+                </optgroup>
+                 <optgroup label="COGS Courses">
+                    <option value="COGS 108">COGS 108</option>
+                    <option value="COGS 120">COGS 120</option>
+                    <option value="COGS 121">COGS 121</option>
+                </optgroup>
+            </select>
+            <button type="button">Submit</button>
+        </form>   
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>fieldset Tag</h3>
+        <form>
+            <fieldset>
+                <legend>Enter Your Contact Information</legend>
+                <label for="firstname">First name:</label>
+                <input type="text" id="firstname" name="firstname">
+                <label for="lastname">Last name:</label>
+                <input type="text" id="lastname" name="lastname">
+                <br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+                <label for="phnoenumber">Phone number:</label>
+                <input type="tel" id="phnoenumber" name="phnoenumber">
+                <br>
+                <p><label for="comment">Do you want to say anything to me?</label></p>
+                <textarea id="comment" name="comment" rows="3" cols="40"></textarea>
+                <br><br>
+                <button type="button">Submit</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>datalist Tag</h3>
+        <form>
+            <label for="course">Choose your favorite course:</label>
+            <input list="courses" name="course" id="course">
+            <datalist id="courses">
+                <option value="CSE 134B">
+                <option value="CSE 134B">
+                <option value="CSE 134B">
+                <option value="CSE 134B">
+                <option value="CSE 134B">
+            </datalist>
+            <button type="button">Submit</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>template Tag</h3>
+        <p>You can not see it through the webpage.</p>
+        <template>
+            <p>Here is the contant for template, you can not see it without js function.</p>
+        </template>
+    </section>
+
+    <hr>
+
+    <section>
+        <h3>table Tag</h3>
+        <table>
+            <colgroup>
+                <col>
+                <col style="background-color:rgb(239, 84, 84)">
+                <col style="background-color:orange">
+                <col style="background-color:yellow">
+                <col style="background-color:rgb(50, 128, 50)">
+                <col style="background-color:cyan">
+                <col style="background-color:lightblue">
+                <col style="background-color:rgb(166, 122, 166)">
+            </colgroup>
+            <caption>Daily Schedule</caption>
+            <tr>
+                <th></th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+            <tr>
+                <td>Get up time</td>
+                <td>9:00</td>
+                <td>10:00</td>
+                <td>9:00</td>
+                <td>8:00</td>
+                <td>7:30</td>
+                <td>11:00</td>
+                <td>9:30</td>
+            </tr>
+            <tr>
+                <td>Sleep time</td>
+                <td>23:30</td>
+                <td>23:50</td>
+                <td>23:00</td>
+                <td>22:30</td>
+                <td>23:10</td>
+                <td>1:00</td>
+                <td>2:30</td>
+            </tr>
+        </table>
+    </section>
+
+<footer>
+    <p> &copy; Jingxian Wang </p>
+</footer>
+
+</body>
+</html>

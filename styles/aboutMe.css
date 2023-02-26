@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --main-font-color: #43312b;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+a:hover {
+    color: #ffebbb;
+    -webkit-text-stroke: 1.5px #967E76;
+}    
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    background-color: #ffefed;
+    font-size: clamp(.95rem, 1.5vw, 1.45rem);
+    width:100%
+}
+
+nav a {
+    color: #967E76;
+}
+
+@font-face {
+    font-family: purpleSmile;
+    src: url(../font/Purple\ Smile.ttf);
+}
+
+body {
+    font-family: purpleSmile, Arial, Helvetica, sans-serif;
+    background-color: #fbefefd4;
+}
+
+hr{
+    height: 1px;
+    background-color: #967e765d;
+    border: none;
+}
+
+h1 {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center; 
+    text-shadow: 0.3vw 0.25vw #bda8a1;
+    font-size: 3.2vw;
+    color: var(--main-font-color);
+}
+
+.container {
+    display: grid;
+    align-items: center; 
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2vw;
+   }
+   
+.box1 {
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    height: auto;
+    border-radius: 1rem;
+}
+   
+.box2 {
+    font-size: 1.4vw;
+    margin-right: 15%;
+    color: var(--main-font-color);
+}
+
+.box3 {
+    margin-top: 10%;
+    margin-right: 15%;
+    width: 70%;
+    height: auto;
+    border-radius: 1rem;
+}
+   
+.box4 {
+    font-size: 1.4vw;
+    margin-left: 15%;
+    color: var(--main-font-color);
+}
+
+.box5 {
+    margin-top: 10%;
+    margin-left: 15%;
+    width: 70%;
+    height: auto;
+    border-radius: 1rem;
+}
+   
+.box6 {
+    font-size: 1.4vw;
+    margin-right: 15%;
+    color: var(--main-font-color);
+}
+
+.box7 {
+    margin-top: 10%;
+    margin-right: 15%;
+    width: 75%;
+    height: auto;
+    border-radius: 1rem;
+    margin-bottom: 20%;
+}
+   
+.box8 {
+    font-size: 1.4vw;
+    margin-left: 15%;
+    color: var(--main-font-color);
+}
+
+.greeting {
+    font-size: 1.4vw;
+    color: var(--main-font-color);
+    margin-bottom: 2%;
+    display:inline-block;
+    animation: slide-left-to-right 10s linear infinite;
+}
+
+@keyframes slide-left-to-right {
+    0% {transform: translateX(-100%);}
+    100% {transform: translateX(600%);}
+}
+
+.footer {
+    color: #9d9694;
+    font-size: 1.1vw;
+    text-align: center;
+    margin-bottom: 1%;
+} 
+
+@media (max-width: 530px) {
+    .navbar {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --main-font-color: #43312b;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+a.navlink:hover {
+    color: #ffebbb;
+    -webkit-text-stroke: 1.5px #967E76;
+}    
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    background-color: #ffefed;
+    font-size: clamp(.95rem, 1.5vw, 1.45rem);
+    width:100%
+}
+
+nav a {
+    color: #967E76;
+}
+
+@font-face {
+    font-family: purpleSmile;
+    src: url(../font/Purple\ Smile.ttf);
+}
+
+body {
+    font-family: purpleSmile, Arial, Helvetica, sans-serif;
+    background-color: #fbefefd4;
+}
+
+hr{
+    height: 1px;
+    background-color: #967e765d;
+    border: none;
+}
+
+h1 {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center; 
+    text-shadow: 0.3vw 0.25vw #bda8a1;
+    font-size: 3.2vw;
+    color: var(--main-font-color);
+}
+
+.contact {
+    display: block;
+    text-align: center;
+    color: #3498db;
+    font-size: 1.4vw;
+}
+
+a.contact:hover {
+    -webkit-text-stroke: 1px #3498db;
+}
+
+h2 {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-top: 0.15rem solid;
+    border-bottom: 0.15rem solid;
+    padding: 1vw;
+    text-align: center;
+    color: var(--main-font-color);
+    border-color: #6c5a55;
+    font-size: 2.5vw;
+}
+
+h3 {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+    padding: 1vw;
+    color: var(--main-font-color);
+    font-size: 1.8vw;
+}
+
+h4 {
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 1vw;
+    color: var(--main-font-color);
+    font-size: 1.4vw;
+}
+
+p {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 1.4vw;
+    color: #574642;
+    padding: 1vw;
+}
+
+ul {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: 1.4vw;
+    color: #574642;
+    padding: 1vw; 
+}
+
+.projects {
+    color: #3498db;
+}
+
+a.projects:hover {
+    -webkit-text-stroke: 1px #3498db;
+}
+
+.footer {
+    color: #9d9694;
+    font-size: 1.1vw;
+    text-align: center;
+    margin-bottom: 1%;
+} 
+
+@media (max-width: 530px) {
+    .navbar {
+        font-size: 0.7rem;
+    }
+}

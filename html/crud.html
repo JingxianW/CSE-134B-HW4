@@ -12,24 +12,27 @@
 <body>
 	<h1>Blog Posts</h1>
 	
-	<!-- First Blog Post -->
-	<article>
-		<h2>Post Title</h2>
-		<p>Date: 01/01/2023</p>
-		<p>Post Summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante sit amet libero rhoncus volutpat.</p>
-	</article>
+    <section id="main_post">
+        <!-- First Blog Post -->
+        <article>
+            <h2>Post Title</h2>
+            <p>Date: 01/01/2023</p>
+            <p>Post Summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante sit amet libero rhoncus volutpat.</p>
+        </article>
 
-	<!-- Second Blog Post -->
-	<article>
-		<h2>Post Title</h2>
-		<p>Date: 02/01/2023</p>
-		<p>Post Summary: Sed vulputate nulla sapien, in iaculis velit dapibus eu. Fusce ultrices bibendum sapien, sed pulvinar est auctor nec.</p>
-	</article>
+        <!-- Second Blog Post -->
+        <article>
+            <h2>Post Title</h2>
+            <p>Date: 02/01/2023</p>
+            <p>Post Summary: Sed vulputate nulla sapien, in iaculis velit dapibus eu. Fusce ultrices bibendum sapien, sed pulvinar est auctor nec.</p>
+        </article>
+    </section>
+	
 
     <!-- Create blog post -->
     <dialog id="create_dialog">
         <p id="create_message"></p>
-        <form id="add-post-form">
+        <form id="add-post-form" method="dialog">
             <div>
               <label for="post_title">Blog Title</label>
               <input type="text" id="post_title">
@@ -51,13 +54,15 @@
     </dialog>
 
     <button id="create">Create</button>
+    <!-- <article>
+        <h2 id="title_output"></h2>
+        <p id="date_output"></p>
+        <p id="summary_output"></p>
+    </article> -->
 
     <script type="module">
         import { createBlog } from '/javascripts/blog.js';
         document.getElementById('create').addEventListener('click', async () => {
-        // const title = document.getElementById('post_title').value;
-        // const date = document.getElementById('post_date').value;
-        // const summary = document.getElementById('post_summary').value;
 
             const result = await createBlog("Please enter your blog:");
             console.log(result);
@@ -72,7 +77,12 @@
                     <p>${date}</p>
                     <p>${summary}</p>
                 `;
-                document.body.appendChild(post);
+                document.getElementById('main_post').appendChild(post);
+                // document.insertAfter(post, document.getElementById('main_post'));
+                // referenceNode.parentNode.insertBefore(post, referenceNode.document.getElementById('main_post'));
+                // document.getElementById('title_output').textContent = title;
+                // document.getElementById('date_output').textContent = date;
+                // document.getElementById('summary_output').textContent = summary;
             }
         });
     </script>

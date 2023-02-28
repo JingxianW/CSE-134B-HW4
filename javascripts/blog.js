@@ -17,10 +17,11 @@ function createBlog(message) {
         // Create an object with the blog post details and resolve the promise with it
         const blogPost = [postTitle, postDate, postSummary]
 
-        console.log(blogPost);
+        // console.log(blogPost);
 
         // document.getElementById('create_dialog').close();
         resolve(blogPost);
+        // resolve(postTitle)
       });
   
       document.getElementById('cancel_btn').addEventListener('click', () => {
@@ -28,10 +29,10 @@ function createBlog(message) {
         resolve(false);
   
         // Clear the input fields and close the dialog box
-        document.getElementById('post_title').value = '';
-        document.getElementById('post_date').value = '';
-        document.getElementById('post_summary').value = '';
-        document.getElementById('create_dialog').close();
+        // document.getElementById('post_title').value = '';
+        // document.getElementById('post_date').value = '';
+        // document.getElementById('post_summary').value = '';
+        // document.getElementById('create_dialog').close();
       });
     });
   }

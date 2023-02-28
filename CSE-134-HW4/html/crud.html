@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Blog Posts</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Blog Posts page of my personal website">
+    <meta name="author" content="Jingxian Wang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<!-- <h1>Blog Posts</h1> -->
+	
+    <section id="main_post">
+        <h2 id="starter">You can add your posts!</h2>
+    </section>
+	
+
+    <!-- Create blog post -->
+    <dialog id="create_dialog">
+        <p id="create_message"></p>
+        <form id="add-post-form" method="dialog" autocomplete="off">
+            <div>
+              <label for="post_title">Blog Title</label>
+              <input type="text" id="post_title">
+              <!-- <output id="output_title"></output> -->
+            </div>
+            <div>
+              <label for="post_date">Date</label>
+              <input type="date" id="post_date">
+              <!-- <output id="output_date"></output> -->
+            </div>
+            <div>
+              <label for="post_summary">Summary</label>
+              <textarea id="post_summary"></textarea>
+              <!-- <output id="output_summary"></output> -->
+            </div>
+            <button id="create_btn" type="submit">Create</button>
+            <button id="cancel_btn">Cancel</button>
+          </form>
+    </dialog>
+
+    <button id="create">Create</button>
+    <!-- <article>
+        <h2 id="title_output"></h2>
+        <p id="date_output"></p>
+        <p id="summary_output"></p>
+    </article> -->
+
+    <script type="module">
+        import { createBlog } from '/javascripts/blog.js';
+        document.getElementById('create').addEventListener('click', async () => {
+
+            const result = await createBlog("Please enter your blog:");
+            console.log(result);
+            if (Array.isArray(result)) {
+                document.getElementById('starter').textContent = ''
+                
+                const title = result[0];
+                const date = result[1];
+                const summary = result[2];
+                const post = document.createElement('div');
+                post.innerHTML = `
+                    <h2>${title}</h2>
+                    <p>Date: ${date}</p>
+                    <p>Summary: ${summary}</p>
+                `;
+                document.getElementById('main_post').appendChild(post);
+                // document.insertAfter(post, document.getElementById('main_post'));
+                // referenceNode.parentNode.insertBefore(post, referenceNode.document.getElementById('main_post'));
+                // document.getElementById('title_output').textContent = title;
+                // document.getElementById('date_output').textContent = date;
+                // document.getElementById('summary_output').textContent = summary;
+            }
+            // else {
+            //     if(result == true) {
+            //         return;
+            //     }
+            //     else {
+                    
+            //     }
+            // }
+        });
+    </script>
+
+    <!-- <footer>
+        <p class="footer"> &copy; Jingxian Wang </p>
+    </footer> -->
+</body>
+</html>

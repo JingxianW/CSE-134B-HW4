@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Blog Posts</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Blog Posts page of my personal website">
+    <meta name="author" content="Jingxian Wang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<h1>Blog Posts</h1>
+	
+	<!-- First Blog Post -->
+	<article>
+		<h2>Post Title</h2>
+		<p>Date: 01/01/2023</p>
+		<p>Post Summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante sit amet libero rhoncus volutpat.</p>
+	</article>
+
+	<!-- Second Blog Post -->
+	<article>
+		<h2>Post Title</h2>
+		<p>Date: 02/01/2023</p>
+		<p>Post Summary: Sed vulputate nulla sapien, in iaculis velit dapibus eu. Fusce ultrices bibendum sapien, sed pulvinar est auctor nec.</p>
+	</article>
+
+    <!-- Create blog post -->
+    <dialog id="create_dialog">
+        <p id="create_message"></p>
+        <form id="add-post-form">
+            <div>
+              <label for="post_title">Blog Title</label>
+              <input type="text" id="post_title">
+              <!-- <output id="output_title"></output> -->
+            </div>
+            <div>
+              <label for="post_date">Date</label>
+              <input type="date" id="post_date">
+              <!-- <output id="output_date"></output> -->
+            </div>
+            <div>
+              <label for="post_summary">Summary</label>
+              <textarea id="post_summary"></textarea>
+              <!-- <output id="output_summary"></output> -->
+            </div>
+            <button id="create_btn" type="submit">Create</button>
+            <button id="cancel_btn">Cancel</button>
+          </form>
+    </dialog>
+
+    <button id="create">Create</button>
+
+    <script type="module">
+        import { createBlog } from '/javascripts/blog.js';
+        document.getElementById('create').addEventListener('click', async () => {
+        // const title = document.getElementById('post_title').value;
+        // const date = document.getElementById('post_date').value;
+        // const summary = document.getElementById('post_summary').value;
+
+            const result = await createBlog("Please enter your blog:");
+            console.log(result);
+            if (result) {
+                // Display the new blog post on the screen
+                const title = result[0];
+                const date = result[1];
+                const summary = result[2];
+                const post = document.createElement('div');
+                post.innerHTML = `
+                    <h3>${title}</h3>
+                    <p>${date}</p>
+                    <p>${summary}</p>
+                `;
+                document.body.appendChild(post);
+            }
+        });
+    </script>
+
+    <!-- <footer>
+        <p class="footer"> &copy; Jingxian Wang </p>
+    </footer> -->
+</body>
+</html>

@@ -25,7 +25,10 @@
             document.getElementById("confirm_output").innerText = '';
             document.getElementById("prompt_output").innerText = '';
 
-		    alert('This is an alert!');
+            setTimeout(() => {
+                alert('This is an alert!');   
+            }, 0)
+		    
 		});
 
         document.getElementById('confirm').addEventListener('click', () => {
@@ -33,7 +36,7 @@
             document.getElementById("prompt_output").innerText = '';
 
             setTimeout(() => {
-                var input = window.confirm('Do you want to confirm?');
+                let input = window.confirm('Do you want to confirm?');
 			    document.getElementById("confirm_output").textContent = `The value returned by the confirm method is: ${input}`; 
             }, 0)
 		});
@@ -43,7 +46,7 @@
             document.getElementById("prompt_output").innerText = '';
 
             setTimeout(() => {
-                var input = window.prompt('Please enter something:');
+                let input = window.prompt('Please enter something:');
                 
                 if (input) {
                     document.getElementById('prompt_output').innerHTML = `${input}`;
@@ -60,7 +63,7 @@
             document.getElementById("prompt_output").innerText = '';
 
             setTimeout(() => {
-                var input = window.prompt('Please enter something:');
+                let input = window.prompt('Please enter something:');
                 if (input) {
                     var purify = DOMPurify.sanitize(input);
                     document.getElementById('prompt_output').innerHTML = `${purify}`;

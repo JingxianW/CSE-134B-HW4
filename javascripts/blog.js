@@ -24,9 +24,15 @@ function createBlog(message) {
         // resolve(postTitle)
       });
   
-      document.getElementById('cancel_btn').addEventListener('click', () => {
+      document.getElementById('cancel_btn').addEventListener('click', (event) => {
         // Resolve the promise with false to indicate that the user canceled
-        resolve(false);
+        // let input = window.confirm('Are you sure you want to cancel it?');
+		event.preventDefault();
+        // resolve(input);
+        if (confirm('Are you sure you want to cancel?')) {
+            document.getElementById('create_dialog').close();
+            resolve(null);
+        }
   
         // Clear the input fields and close the dialog box
         // document.getElementById('post_title').value = '';

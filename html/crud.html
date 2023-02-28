@@ -10,29 +10,17 @@
 </head>
 
 <body>
-	<h1>Blog Posts</h1>
+	<!-- <h1>Blog Posts</h1> -->
 	
     <section id="main_post">
-        <!-- First Blog Post -->
-        <article>
-            <h2>Post Title</h2>
-            <p>Date: 01/01/2023</p>
-            <p>Post Summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis ante sit amet libero rhoncus volutpat.</p>
-        </article>
-
-        <!-- Second Blog Post -->
-        <article>
-            <h2>Post Title</h2>
-            <p>Date: 02/01/2023</p>
-            <p>Post Summary: Sed vulputate nulla sapien, in iaculis velit dapibus eu. Fusce ultrices bibendum sapien, sed pulvinar est auctor nec.</p>
-        </article>
+        <h2 id="starter">You can add your posts!</h2>
     </section>
 	
 
     <!-- Create blog post -->
     <dialog id="create_dialog">
         <p id="create_message"></p>
-        <form id="add-post-form" method="dialog">
+        <form id="add-post-form" method="dialog" autocomplete="off">
             <div>
               <label for="post_title">Blog Title</label>
               <input type="text" id="post_title">
@@ -66,16 +54,17 @@
 
             const result = await createBlog("Please enter your blog:");
             console.log(result);
-            if (result) {
-                // Display the new blog post on the screen
+            if (Array.isArray(result)) {
+                document.getElementById('starter').textContent = ''
+                
                 const title = result[0];
                 const date = result[1];
                 const summary = result[2];
                 const post = document.createElement('div');
                 post.innerHTML = `
-                    <h3>${title}</h3>
-                    <p>${date}</p>
-                    <p>${summary}</p>
+                    <h2>${title}</h2>
+                    <p>Date: ${date}</p>
+                    <p>Summary: ${summary}</p>
                 `;
                 document.getElementById('main_post').appendChild(post);
                 // document.insertAfter(post, document.getElementById('main_post'));
@@ -84,6 +73,14 @@
                 // document.getElementById('date_output').textContent = date;
                 // document.getElementById('summary_output').textContent = summary;
             }
+            // else {
+            //     if(result == true) {
+            //         return;
+            //     }
+            //     else {
+                    
+            //     }
+            // }
         });
     </script>
 

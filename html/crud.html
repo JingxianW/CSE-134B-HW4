@@ -42,17 +42,19 @@
     </dialog>
 
     <button id="create">Create</button>
-    <!-- <article>
-        <h2 id="title_output"></h2>
-        <p id="date_output"></p>
-        <p id="summary_output"></p>
-    </article> -->
+
+    <dialog id="custom_confirm_dialog">
+        <p id="confirm_message"></p>
+        <button id="yes_btn">Yes</button>
+        <button id="no_btn">Cancel</button>
+    </dialog>
 
     <script type="module">
-        import { createBlog } from '/javascripts/blog.js';
+        import { createPost, customConfirm } from '/javascripts/blog.js';
         document.getElementById('create').addEventListener('click', async () => {
 
-            const result = await createBlog("Please enter your blog:");
+            // <!-- Create blog post -->
+            const result = await createPost("Please enter your blog:");
             console.log(result);
             if (Array.isArray(result)) {
                 document.getElementById('starter').textContent = ''
@@ -60,11 +62,12 @@
                 const title = result[0];
                 const date = result[1];
                 const summary = result[2];
-                const post = document.createElement('div');
+                const post = document.createElement('article');
                 post.innerHTML = `
                     <h2>${title}</h2>
                     <p>Date: ${date}</p>
                     <p>Summary: ${summary}</p>
+                    <button class="delete_btn">Delete</button>
                 `;
                 document.getElementById('main_post').appendChild(post);
                 // document.insertAfter(post, document.getElementById('main_post'));
@@ -72,17 +75,24 @@
                 // document.getElementById('title_output').textContent = title;
                 // document.getElementById('date_output').textContent = date;
                 // document.getElementById('summary_output').textContent = summary;
+
+                // <!-- Delete blog post -->
+                console.log(document.getElementsByClassName('delete_btn'));
+                const deleteBtn = post.querySelector('.delete_btn');
+                deleteBtn.addEventListener('click', async () => {
+                    let input = await customConfirm('Are you sure you want to delete it?');
+                    console.log(input)
+                    if (input) {
+                        post.remove(); // remove the parent div element
+                    }
+                });
+
+                
+                // <!-- Edit blog post -->
             }
-            // else {
-            //     if(result == true) {
-            //         return;
-            //     }
-            //     else {
-                    
-            //     }
-            // }
         });
     </script>
+
 
     <!-- <footer>
         <p class="footer"> &copy; Jingxian Wang </p>

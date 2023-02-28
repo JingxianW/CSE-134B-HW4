@@ -1,8 +1,9 @@
-export { createBlog };
+export { createPost, customConfirm };
 
-function createBlog(message) {
+// Create Blog Post
+function createPost(message) {
     document.getElementById('create_message').textContent = message;
-
+    
     document.getElementById('create_dialog').showModal();
   
     return new Promise(resolve => {
@@ -24,21 +25,48 @@ function createBlog(message) {
         // resolve(postTitle)
       });
   
-      document.getElementById('cancel_btn').addEventListener('click', (event) => {
+      document.getElementById('cancel_btn').addEventListener('click', async (event) => {
         // Resolve the promise with false to indicate that the user canceled
         // let input = window.confirm('Are you sure you want to cancel it?');
-		event.preventDefault();
+		    event.preventDefault();
         // resolve(input);
-        if (confirm('Are you sure you want to cancel?')) {
+        let input = await customConfirm('Are you sure you want to cancel?');
+        // customAlert('This is an alert!');   
+        if (input) {
             document.getElementById('create_dialog').close();
             resolve(null);
         }
-  
-        // Clear the input fields and close the dialog box
-        // document.getElementById('post_title').value = '';
-        // document.getElementById('post_date').value = '';
-        // document.getElementById('post_summary').value = '';
-        // document.getElementById('create_dialog').close();
+        else {
+          // document.getElementById('create_dialog').close();
+          return;
+        }
       });
+
+      // document.getElementById('create_dialog').showModal();
     });
+
   }
+
+// Custom Dialog for Confirm
+function customConfirm(message) {
+  document.getElementById('confirm_message').textContent = message;
+  
+  const confirmDialog = document.getElementById('custom_confirm_dialog');
+  if (!confirmDialog.hasAttribute('open')) {
+    confirmDialog.showModal();
+  }
+  // document.getElementById('custom_confirm_dialog').showModal();
+
+  return new Promise(resolve => {
+    document.getElementById('yes_btn').addEventListener('click', () => {
+      document.getElementById('custom_confirm_dialog').close();
+      resolve(true);
+    });
+
+    document.getElementById('no_btn').addEventListener('click', () => {
+      document.getElementById('custom_confirm_dialog').close();
+      resolve(false);
+    });
+  });
+  
+}

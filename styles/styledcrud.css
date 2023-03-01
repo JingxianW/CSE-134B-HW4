@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #fbefefd4;
+}
+
+h1 {
+    position: relative;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    justify-content: center; 
+    text-shadow: 0.3vw 0.25vw #bda8a1;
+    font-size: 5vw;
+    color: #43312b;
+}
+
+#starter {
+    padding: 20px;
+    color: #6b554e;
+    font-size: 1.5vw;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2vw;
+    cursor: pointer;
+}
+
+.footer {
+    color: #9d9694;
+    font-size: 1.1vw;
+    text-align: center;
+    margin-top: 100%;
+} 
+
+dialog {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #9d9694;
+    border-radius: 5px;
+    background-color: #fbefef;
+    z-index: 1;
+}
+
+dialog::backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-color: #43312b37;
+}
+
+#create_message {
+    position: relative;
+    align-items: center;
+    justify-content: center; 
+    padding: 10px;
+    color: #43312b;
+    font-weight: bold;
+}
+
+#create_btn, #submit_btn, #edit_btn{
+    background-color: #43312b;
+}
+
+#cancel_btn {
+    margin-left: 40%;
+    background-color: #43312b7c;
+    color: white;
+}
+
+#yes_btn {
+    background-color: #43312b7c;
+}
+
+#no_btn{
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: #43312bda;
+}
+
+#edit_cancel_btn {
+    background-color: none;
+    background-color: #43312b5a;
+}
+
+#edit_icon {
+    width: 60%;
+    height: auto;
+    /* background-color: #fcfcfc; */
+}
+
+#delete_icon {
+    width: 75%;
+    height: auto;
+}
+
+.delete_btn {
+    margin-left: 20%;
+}
+
+#alert_btn {
+    background-color: #43312b;
+    margin-top: 5%;
+    margin-left: 40%;
+}
+
+article {
+    margin-bottom: 20%;
+    padding: 25px;
+    border: 1px solid #9d9694;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 3px #43312b8d;
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-size: 2.5vw;
+    font-weight: bold;
+    color: #43312b;
+}
+
+.date {
+    margin-bottom: 20px;
+    font-size: 1vw;
+    color: #43312b8e;
+}
+
+.summary {
+    margin-bottom: 20px;
+    font-size: 1.5vw;
+    color: #43312b;
+}
+
+
+  

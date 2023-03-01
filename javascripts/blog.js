@@ -1,4 +1,4 @@
-export { createPost, customConfirm, editPost };
+export { createPost, customConfirm, editPost, customAlert };
 
 // Create Blog Post
 function createPost(message) {
@@ -96,5 +96,16 @@ function editPost(message, post) {
         return;
       }
     });
+  });
+}
+
+// Custom Dialog for Alert
+function customAlert(message) {
+  document.getElementById('alert_message').textContent = message;
+
+  document.getElementById('custom_alert_dialog').showModal();
+
+  document.getElementById('alert_btn').addEventListener('click', () => {
+    document.getElementById('custom_alert_dialog').close();
   });
 }

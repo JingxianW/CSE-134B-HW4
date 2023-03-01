@@ -25,7 +25,7 @@ function createPost(message) {
 		    event.preventDefault();
         
         let answer = await customConfirm('Are you sure you want to cancel the blog post creation?');
-        // customAlert('This is an alert!');   
+ 
         if (answer) {
             document.getElementById('create_post_dialog').close();
             resolve(null);

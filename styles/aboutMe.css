@@ -35,7 +35,7 @@ nav a {
 }
 
 body {
-    font-family: purpleSmile, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #fbefefd4;
 }
 
@@ -143,5 +143,18 @@ h1 {
 @media (max-width: 530px) {
     .navbar {
         font-size: 0.9rem;
+    }
+
+    .box2, .box4, .box6, .box8 {
+        font-size: min(11px, 1rem);
+        margin-top: 20%;
+    }
+
+    .greeting {
+        font-size: min(9px, 1.4vw);
+    }
+
+    .footer {
+        font-size: min(7px, 1.1vw);
     }
 }

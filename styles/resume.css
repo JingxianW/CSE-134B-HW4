@@ -35,7 +35,7 @@ nav a {
 }
 
 body {
-    font-family: purpleSmile, Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #fbefefd4;
 }
 
@@ -132,5 +132,25 @@ a.projects:hover {
 @media (max-width: 530px) {
     .navbar {
         font-size: 0.7rem;
+    }
+
+    p, ul, a {
+        font-size: min(11px, 0.5rem);
+    }
+
+    h4 {
+        font-size: min(11px, 0.8rem);
+    }
+
+    h3 {
+        font-size: min(14px, 0.8rem);
+    }
+
+    h2 {
+        font-size: min(16px, 1rem);
+    }
+
+    footer {
+        font-size: min(9px, 1.1vw);
     }
 }

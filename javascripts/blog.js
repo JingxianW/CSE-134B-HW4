@@ -1,48 +1,39 @@
-export { createPost, customConfirm };
+export { createPost, customConfirm, editPost };
 
 // Create Blog Post
 function createPost(message) {
     document.getElementById('create_message').textContent = message;
-    
-    document.getElementById('create_dialog').showModal();
+
+    document.getElementById('post_title').value = '';
+    document.getElementById('post_date').value = '';
+    document.getElementById('post_summary').value = '';
+
+    document.getElementById('create_post_dialog').showModal();
   
     return new Promise(resolve => {
-      document.getElementById('create_btn').addEventListener('click', () => {
-        // Get the values of the input fields
+      document.getElementById('submit_btn').addEventListener('click', () => {
         const postTitle = document.getElementById('post_title').value;
         const postDate = document.getElementById('post_date').value;
         const postSummary = document.getElementById('post_summary').value;
-        console.log(postTitle);
-        console.log(postDate);
-        console.log(postSummary);
-        // Create an object with the blog post details and resolve the promise with it
+
         const blogPost = [postTitle, postDate, postSummary]
 
-        // console.log(blogPost);
-
-        // document.getElementById('create_dialog').close();
         resolve(blogPost);
-        // resolve(postTitle)
       });
   
       document.getElementById('cancel_btn').addEventListener('click', async (event) => {
-        // Resolve the promise with false to indicate that the user canceled
-        // let input = window.confirm('Are you sure you want to cancel it?');
 		    event.preventDefault();
-        // resolve(input);
-        let input = await customConfirm('Are you sure you want to cancel?');
+        
+        let answer = await customConfirm('Are you sure you want to cancel the blog post creation?');
         // customAlert('This is an alert!');   
-        if (input) {
-            document.getElementById('create_dialog').close();
+        if (answer) {
+            document.getElementById('create_post_dialog').close();
             resolve(null);
         }
         else {
-          // document.getElementById('create_dialog').close();
           return;
         }
       });
-
-      // document.getElementById('create_dialog').showModal();
     });
 
   }
@@ -55,7 +46,6 @@ function customConfirm(message) {
   if (!confirmDialog.hasAttribute('open')) {
     confirmDialog.showModal();
   }
-  // document.getElementById('custom_confirm_dialog').showModal();
 
   return new Promise(resolve => {
     document.getElementById('yes_btn').addEventListener('click', () => {
@@ -69,4 +59,42 @@ function customConfirm(message) {
     });
   });
   
+}
+
+// Edit Blog Post
+function editPost(message, post) {
+  document.getElementById('edit_message').textContent = message;
+
+  document.getElementById('edit_post_title').value = post.firstElementChild.textContent;
+  document.getElementById('edit_post_date').value = post.firstElementChild.nextElementSibling.textContent.substring(6);
+  document.getElementById('edit_post_summary').value = post.firstElementChild.nextElementSibling.nextElementSibling.textContent.substring(9);
+
+  document.getElementById('edit_dialog').showModal();
+
+  return new Promise(resolve => {
+    document.getElementById('edit_btn').addEventListener('click', () => {
+
+      const editPostTitle = document.getElementById('edit_post_title').value;
+      const editPostDate = document.getElementById('edit_post_date').value;
+      const editPostSummary = document.getElementById('edit_post_summary').value;
+
+      const editBlogPost = [editPostTitle, editPostDate, editPostSummary]
+
+      resolve(editBlogPost);
+    });
+
+    document.getElementById('edit_cancel_btn').addEventListener('click', async (event) => {
+      event.preventDefault();
+
+      let answer = await customConfirm('Are you sure you want to cancel the edit?');
+
+      if (answer) {
+        document.getElementById('edit_dialog').close();
+        resolve(null);
+      } 
+      else {
+        return;
+      }
+    });
+  });
 }

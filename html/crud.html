@@ -8,6 +8,9 @@
     <meta name="author" content="Jingxian Wang">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.min.js" integrity="sha512-TU4FJi5o+epsahLtM9OFRvH2gXmmlzGlysk9wtTFgbYbMvFzh3Cw1l3ubnYIvBiZCC/aurRHS408TeEbcuOoyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.js" integrity="sha512-TRW4uJEyH03RBYDDP/0Nerf3y1zPCPzmLBq5IwjYtUyPD505Aro7Xh6ELpKmnH3yeKj6MP3meheJMJXB4aN0eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HCMTKFE2LE"></script>
     <script>
@@ -96,12 +99,86 @@
 
 
     <!-- Javascript -->
+
     <script type="module">
 
         import { createPost, customConfirm, editPost, customAlert } from '/javascripts/blog.js';
  
         // Key for the local storage
         var index = 0;
+
+        if(localStorage.length != 0) {
+            document.getElementById('starter').textContent = '';
+            index = localStorage.length;
+            for(let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                let value = localStorage.getItem(key);
+
+                var post = document.createElement('article');
+                post.innerHTML = `<h2 class="title">${DOMPurify.sanitize(JSON.parse(value)[0].summary)}</h2>
+                                <p class="date">Date: ${JSON.parse(value)[0].date}</p>
+                                <p class="summary">Summary: ${DOMPurify.sanitize(JSON.parse(value)[0].summary)}</p>
+                                <button class="delete_btn">Delete</button>
+                                <button class="edit_btn">Edit</button>
+                                `;
+                document.getElementById('main_post').appendChild(post);
+
+                post.querySelector('.delete_btn').addEventListener('click', async () => {
+                    let answer = await customConfirm('Are you sure you want to delete it?');
+                    if (answer) {
+                        // Remove the data from the local storage
+                        for(let i = 0; i < localStorage.length; i++) {
+                            let key = localStorage.key(i);
+                            let value = localStorage.getItem(key);
+
+                            localStorage.removeItem(localStorage.key(i));
+                        }
+
+                        // Remove the blog post from the webpage
+                        post.remove(); 
+
+                        if(localStorage.length === 0) {
+                            document.getElementById('starter').textContent = 'You can add your posts!';
+                        }
+                    }
+                });   
+
+                post.querySelector('.edit_btn').addEventListener('click', async () => {
+                    // get the key for the value we need to edit
+                    var key;
+                    for(let i = 0; i < localStorage.length; i++) {
+                            key = localStorage.key(i);
+                            let value = localStorage.getItem(key);
+                            if(JSON.parse(value)[0].title === post.firstElementChild.textContent &&
+                            JSON.parse(value)[0].date === post.firstElementChild.nextElementSibling.textContent.substring(6) &&
+                            JSON.parse(value)[0].summary === post.firstElementChild.nextElementSibling.nextElementSibling.textContent.substring(9)) {
+
+                                break;
+                            }
+                            
+                    }
+
+                    const update = await editPost("Edit Your Blog Here!", post);
+                    // result = update;
+
+                    if(Array.isArray(update)) {
+                        // update the content in webpage
+                        post.firstElementChild.textContent = update[0];
+                        post.firstElementChild.nextElementSibling.textContent = `Date: ${update[1]}`;
+                        post.firstElementChild.nextElementSibling.nextElementSibling.textContent = `Summary: ${update[2]}`;
+
+                        // update the content in local storage
+                        let editedPost = JSON.parse(localStorage.getItem(key));
+
+                        editedPost[0].title = update[0];
+                        editedPost[0].date = update[1];
+                        editedPost[0].summary = update[2];
+
+                        localStorage.setItem(key, JSON.stringify(editedPost));
+                    }
+                });
+            }
+        }
 
         // Click the create button to create the blog post
         document.getElementById('create_btn').addEventListener('click', async () => {
